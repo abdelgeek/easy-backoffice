@@ -1,0 +1,33 @@
+ul.bookingblocknav{
+    display: block;
+
+width: 100%;
+background: linear-gradient(87deg,#010532 0, #03978e 100%) !important;
+margin: 0;
+margin: 0;
+padding: 1rem;
+}
+
+ ul.bookingblocknav li.nav-link{
+    display: inline-block;
+ width: 25%;
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+  border-right:1px solid #c8ced3
+}
+
+ul.bookingblocknav .nav-link a {
+   color: #fff;
+   padding: 0.75rem;
+}
+
+ul.bookingblocknav .nav-link a:hover {
+    background-color: #2fa29c;
+   
+}
+
+ul.bookingblocknav .nav-link a.active {
+    background-color: #125d9f;
+   
+}

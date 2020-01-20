@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.section-content{
+margin-top: 65px;
+display: flex;
+flex-direction: row;
+flex-grow: 1;
+overflow-x: hidden;
+}
+
+.sidebar{
+height: calc(100vh - 55px);
+margin-left: 0;
+position: fixed;
+z-index: 1019;
+width: 250px;
+flex: 0 0 200px;
+display: flex;
+-ms-flex-direction: column;
+flex-direction: column;
+padding: 0;
+color: #fff;
+background: #2b8e88;
+}
+
+.sidebar-nav{
+    position: relative;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: inherit;
+}
+
+.sidebar-nav .nav-item {
+    position: relative;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-nav .nav-link {
+display: block;
+padding: 1rem;
+color: #fff;
+text-decoration: none;
+background: 0 0;}
+
+.sidebar-nav .nav-item .active{
+    background-color: #125da0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-group {
+    align-items: center;
+}
+
+.form-control {
+    height: calc(2rem + 2px) !important;
+    padding: 0.25rem 0.35rem !important;
+}
+
+
+.cdk-overlay-container {
+    z-index: 1900 !important;
+}
+
+#cdk-overlay-0{
+    
+    bottom: -28px !important;
+}
+
