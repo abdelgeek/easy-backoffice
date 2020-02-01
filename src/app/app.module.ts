@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { GestionCommandesModule } from './pages/gestion-commandes/gestion-commandes.module';
+import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 
 
 @NgModule({
@@ -23,14 +24,17 @@ import { GestionCommandesModule } from './pages/gestion-commandes/gestion-comman
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,
+       useClass: BasicAuthInterceptorService, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

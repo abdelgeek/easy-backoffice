@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import {map, startWith} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { RendezVousService } from 'src/app/services/rendez-vous.service';
+
 
 @Component({
   selector: 'app-rendez-vous',
@@ -11,37 +16,76 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./rendez-vous.component.scss']
 })
 export class RendezVousComponent implements OnInit {
- 
+
 
   closeResult
+   displayedColumns: string[] = ['reference', 'client', 'categorie', 'type', 'date', 'statut', 'tache', 'agent', 'actions'];
+   dataSource = new MatTableDataSource();
   
+
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   myControl = new FormControl();
-  options: string[]= ['Agent A', 'Agent B', 'Agent C',
-  'Agent D', 'Agent E', 'Agent F','Agent G', 'Agent H', 'Agent I',
-  'Agent J', 'Agent K', 'Agent L','Agent M', 'Agent N', 'Agent O'];;
   filteredOptions: Observable<string[]>;
-  
-  constructor(private modalService: NgbModal) { }
+
+  constructor(private modalService: NgbModal,
+    private rendezVousService: RendezVousService) { }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+    // this.filteredOptions = this.myControl.valueChanges
+    // .pipe(
+    //   startWith(''),
+    //   map(value => this._filter(value))
+    // );
+  
+
+   this.dataSource.filterPredicate = function(data:any, filter: string): boolean {
+    return data.reference.toLowerCase().includes(filter);
+    this.getToken();
+};
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+console.log(filterValue)
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   //open modal
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed`;
     });
   }
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  //  return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
+
+  findAll() {
+    this.rendezVousService.FindAllService().subscribe(
+      (resp: any) => {
+        this.dataSource = new MatTableDataSource(resp);
+     //  this.dataSource.paginator = this.paginator;
+      }
+    )
+  }
+
+  getToken() {
+    this.rendezVousService.getToken().subscribe(
+      (resp: any) => {
+        if (resp.success) {
+          const token = resp.data.jwt
+          localStorage.setItem("token", token);
+          this. findAll() ;
+        }
+      }, err => {
+
+      })
   }
 }

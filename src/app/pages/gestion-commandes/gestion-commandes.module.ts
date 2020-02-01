@@ -11,14 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [GestionCommandesComponent,
     NavComponent, RendezVousComponent
   ],
-  imports: [MatSlideToggleModule,
-   
-    
+  imports: [MatSlideToggleModule,MatTableModule,MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
