@@ -19,6 +19,7 @@ export class RendezVousService {
       }
 
   getToken(){
+    //static action
     const url=this.apiUrl + "agent/login_agent";
     let user:any={}
     user.username="abde"
