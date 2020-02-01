@@ -39,9 +39,7 @@ export class RendezVousComponent implements OnInit {
     // );
   
 
-   this.dataSource.filterPredicate = function(data:any, filter: string): boolean {
-    return data.reference.toLowerCase().includes(filter)};
-    this.getToken();
+      this.getToken();
 
   }
 
@@ -71,7 +69,7 @@ console.log(filterValue)
     this.rendezVousService.FindAllService().subscribe(
       (resp: any) => {
         this.dataSource = new MatTableDataSource(resp);
-     //  this.dataSource.paginator = this.paginator;
+       this.dataSource.paginator = this.paginator;
       }
     )
   }

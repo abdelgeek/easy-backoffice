@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api:"http://localhost:45165/easy-backend/api/"
+  api:"http://localhost:7539/easy-backend/api/"
 //api:"https://easybackendpilote.herokuapp.com/easy-backend/api/"
 };
 

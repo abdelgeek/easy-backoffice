@@ -63,19 +63,19 @@ height: calc(100vh - 190px);
              
               <ng-container matColumnDef="client">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Client </th>
-                <td mat-cell *matCellDef="let row"> {{row.customer.name}} {{row.customer.lastname}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.customerName}} </td>
               </ng-container>
           
              
               <ng-container matColumnDef="categorie">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Categorie Client </th>
-                <td mat-cell *matCellDef="let row"> {{row.customer.account_type}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.accountType}}</td>
               </ng-container>
           
               <!-- Color Column -->
               <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Type Rendez-vous </th>
-                <td mat-cell *matCellDef="let row" > {{row.formule.label}} </td>
+                <td mat-cell *matCellDef="let row" > {{row.formule}} </td>
               </ng-container>
               <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
@@ -83,7 +83,7 @@ height: calc(100vh - 190px);
               </ng-container>
               <ng-container matColumnDef="statut">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut </th>
-                <td mat-cell *matCellDef="let row" [style.color]="row.color">{{row.bookingStatus.label}} </td>
+                <td mat-cell *matCellDef="let row" [style.color]="row.color">{{row.statut}} </td>
               </ng-container>
               <ng-container matColumnDef="tache">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Tache à venir </th>
