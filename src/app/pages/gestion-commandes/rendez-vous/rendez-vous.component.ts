@@ -40,9 +40,9 @@ export class RendezVousComponent implements OnInit {
   
 
    this.dataSource.filterPredicate = function(data:any, filter: string): boolean {
-    return data.reference.toLowerCase().includes(filter);
+    return data.reference.toLowerCase().includes(filter)};
     this.getToken();
-};
+
   }
 
   applyFilter(filterValue: string) {
