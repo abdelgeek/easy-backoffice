@@ -13,7 +13,6 @@ export class RendezVousService {
  
 
   FindAllService(){
-    
        const url =this.apiUrl + "booking/all"
         return this.http.get(url);
       }
@@ -24,6 +23,7 @@ export class RendezVousService {
     let user:any={}
     user.username="abde"
     user.password="abdel"
+    console.log("user" + JSON.stringify(user))
     return this.http.post(url,user);
   }
 }
