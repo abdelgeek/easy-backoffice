@@ -21,8 +21,8 @@ export class RendezVousService {
     //static action
     const url=this.apiUrl + "agent/login_agent";
     let user:any={}
-    user.username="abde"
-    user.password="abdel"
+    user.username="abdel"
+    user.password="abde"
     console.log("user credential" + JSON.stringify(user))
     return this.http.post(url,user);
   }
