@@ -13,7 +13,7 @@ export class RendezVousService {
  
 
   FindAllService(){
-       const url =this.apiUrl + "booking/all"
+       const url =this.apiUrl + "booking/"
         return this.http.get(url);
       }
 }
