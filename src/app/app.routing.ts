@@ -7,11 +7,14 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { GestionCommandesComponent } from './pages/gestion-commandes/gestion-commandes.component';
 
+import { RouteGuardService } from './services/route-guard.service';
+
 const routes: Routes =[
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full',
+    pathMatch: 'full'
+   
   }, {
     path: '',
     component: AdminLayoutComponent,
@@ -33,7 +36,8 @@ const routes: Routes =[
   }, 
  {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'dashboard',
+    
   }
 ];
 

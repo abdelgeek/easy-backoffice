@@ -6,16 +6,15 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { GestionCommandesComponent } from 'src/app/pages/gestion-commandes/gestion-commandes.component';
+import { RouteGuardService } from 'src/app/services/route-guard.service';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [RouteGuardService] },
+  
     {
         path: 'gestion-commandes',
         component:  GestionCommandesComponent,
+        canActivate: [RouteGuardService],
         children: [
           {
             path: '',

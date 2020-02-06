@@ -39,7 +39,7 @@ export class RendezVousComponent implements OnInit {
     // );
   
 
-      this.getToken();
+      this.findAll();
 
   }
 
@@ -72,18 +72,5 @@ console.log(filterValue)
        this.dataSource.paginator = this.paginator;
       }
     )
-  }
-
-  getToken() {
-    this.rendezVousService.getToken().subscribe(
-      (resp: any) => {
-        if (resp.success) {
-          const token = resp.data.jwt
-          localStorage.setItem("token", token);
-          this. findAll() ;
-        }
-      }, err => {
-
-      })
   }
 }

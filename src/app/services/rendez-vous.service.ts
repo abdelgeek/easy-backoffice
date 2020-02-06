@@ -16,14 +16,4 @@ export class RendezVousService {
        const url =this.apiUrl + "booking/all"
         return this.http.get(url);
       }
-
-  getToken(){
-    //static action
-    const url=this.apiUrl + "agent/login_agent";
-    let user:any={}
-    user.username="abdel"
-    user.password="abde"
-    console.log("user credential" + JSON.stringify(user))
-    return this.http.post(url,user);
-  }
 }
